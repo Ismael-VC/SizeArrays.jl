@@ -24,7 +24,9 @@ module SizeArrays
     similar(x::SizeVector) = SizeVector(similar(x.data))
     similar(A::SizeMatrix) = SizeMatrix(similar(A.data))
     similar{T}(x::SizeVector, ::Type{T}, n::(Int,)) = SizeVector(similar(x.data, T, n))
+    similar{T}(x::SizeVector, ::Type{T}, n::(Int,Int)) = SizeMatrix(similar(x.data, T, n))
     similar{T}(A::SizeMatrix, ::Type{T}, n::(Int,Int)) = SizeMatrix(similar(A.data, T, n))
+    similar{T}(A::SizeMatrix, ::Type{T}, n::(Int,)) = SizeVector(similar(A.data, T, n))
 
     getindex(A::SizeVector,i::Integer) = getindex(A.data, i)
     getindex(A::SizeMatrix,i::Integer) = getindex(A.data, i)
